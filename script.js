@@ -5,14 +5,26 @@ document.getElementById('nameForm').addEventListener('submit', function(e) {
 });
 
 function generateCard(name) {
-    var canvas = document.createElement('canvas');
-    canvas.width = 500; // Set canvas width
-    canvas.height = 500; // Set canvas height
-    var ctx = canvas.getContext('2d');
+    var card = document.createElement('div');
+    card.classList.add('card');
 
     var image = new Image();
     image.onload = function() {
-        ctx.drawImage(image, 0, 0, canvas.width, canvas.height); // Draw the image
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+
+        // Calculate the dimensions to fit the image within the card
+        var maxWidth = 400; // Maximum width of the card
+        var aspectRatio = image.width / image.height;
+        var newWidth = Math.min(maxWidth, image.width);
+        var newHeight = newWidth / aspectRatio;
+
+        // Set canvas dimensions to fit the resized image
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
+        // Draw the resized image
+        ctx.drawImage(image, 0, 0, newWidth, newHeight);
 
         ctx.fillStyle = 'white'; // Set text color
         ctx.font = '30px Arial'; // Set font size and style
@@ -22,9 +34,12 @@ function generateCard(name) {
         ctx.textBaseline = 'middle'; // Align text vertically to middle
         ctx.fillText(name, textX, textY); // Write user's name
 
+        card.innerHTML = ''; // Clear previous card content
+        card.appendChild(canvas); // Append canvas to card
+
         var cardContainer = document.getElementById('cardContainer');
         cardContainer.innerHTML = ''; // Clear previous card
-        cardContainer.appendChild(canvas); // Append canvas to card container
+        cardContainer.appendChild(card); // Append card to card container
 
         var downloadButton = document.getElementById('downloadButton');
         downloadButton.style.display = 'block'; // Display download button
@@ -33,7 +48,7 @@ function generateCard(name) {
         };
     };
 
-    image.src = 'eid.png';
+    image.src = 'eid.png'; // Set the image source
 }
 
 function downloadCanvas(canvas, filename) {
