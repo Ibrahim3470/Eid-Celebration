@@ -17,7 +17,7 @@ function generateCard(name) {
         ctx.fillStyle = 'white'; // Set text color
         ctx.font = '30px Arial'; // Set font size and style
         var textX = canvas.width / 2; // X-coordinate for centering text horizontally
-        var textY = canvas.height / 2; // Y-coordinate for centering text vertically
+        var textY = canvas.height / 1.8; // Y-coordinate for centering text vertically
         ctx.textAlign = 'center'; // Align text horizontally to center
         ctx.textBaseline = 'middle'; // Align text vertically to middle
         ctx.fillText(name, textX, textY); // Write user's name
