@@ -1,29 +1,36 @@
+/* Existing CSS */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: #D9EDBF; /* Light gray background */
 }
 
+/* Container styling */
 .container {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #90D26D; /* White container background */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
     text-align: center;
 }
 
+/* Input styling */
 input[type="text"] {
     padding: 10px;
     margin: 10px;
     width: calc(100% - 20px);
+    border: 1px solid black; /* Light border color */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #1f5749;
 }
 
+/* Button styling */
 button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #2C7865; /* Blue button color */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -32,9 +39,10 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
+/* Card styling */
 #cardContainer {
     margin-top: 20px;
 }
@@ -43,18 +51,25 @@ button:hover {
     padding: 20px;
     margin: 20px auto;
     max-width: 400px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Add this to ensure images stay within the card boundaries */
 }
 
-/* Responsive CSS */
-@media only screen and (max-width: 600px) {
-    .container {
-        max-width: 90%;
-    }
+.card img {
+    max-width: 100%; /* Ensure the image does not exceed the width of its container */
+    height: auto; /* Automatically adjust the height while maintaining the aspect ratio */
+    display: block; /* Ensure the image is displayed as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+    max-height: 100%;
+}
 
+@media only screen and (max-width: 400px) {
     .card img {
-        max-width: 80%; /* Adjust the percentage as needed */
+        max-width: 80%; /* Adjust the maximum width for smaller screens */
+        height: auto; /* Ensure the height adjusts proportionally */
     }
+}
+
+#downloadButton {
+    display: block;
+    margin: 20px auto; /* Adjust margin as needed */
 }
