@@ -1,43 +1,60 @@
-document.getElementById('nameForm').addEventListener('submit', function(e) {
+document.getElementById('nameForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var name = document.getElementById('name').value;
     generateCard(name);
 });
 
 function generateCard(name) {
-    var canvas = document.createElement('canvas');
-    canvas.width = 500; // Set canvas width
-    canvas.height = 500; // Set canvas height
-    var ctx = canvas.getContext('2d');
+    const aspectRatio = 1;
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    let canvasWidth = windowWidth;
+    let canvasHeight = canvasWidth / aspectRatio;
 
-    var image = new Image();
-    image.onload = function() {
-        ctx.drawImage(image, 0, 0, canvas.width, canvas.height); // Draw the image
+    if (canvasHeight > windowHeight) {
+        canvasHeight = windowHeight;
+        canvasWidth = canvasHeight * aspectRatio;
+    }
 
-        ctx.fillStyle = 'white'; // Set text color
-        ctx.font = '30px Arial'; // Set font size and style
-        var textX = canvas.width / 2; // X-coordinate for centering text horizontally
-        var textY = canvas.height / 1.8; // Y-coordinate for centering text vertically
-        ctx.textAlign = 'center'; // Align text horizontally to center
-        ctx.textBaseline = 'middle'; // Align text vertically to middle
-        ctx.fillText(name, textX, textY); // Write user's name
+    const canvas = document.createElement('canvas');
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+    const ctx = canvas.getContext('2d');
 
-        var cardContainer = document.getElementById('cardContainer');
-        cardContainer.innerHTML = ''; // Clear previous card
-        cardContainer.appendChild(canvas); // Append canvas to card container
+    const image = new Image();
+    image.onload = function () {
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-        var downloadButton = document.getElementById('downloadButton');
-        downloadButton.style.display = 'block'; // Display download button
-        downloadButton.onclick = function() {
-            downloadCanvas(canvas, 'eid_card.png'); // Call downloadCanvas function when button is clicked
+        ctx.fillStyle = 'white';
+        ctx.font = '30px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(name, canvas.width / 2, canvas.height / 1.8);
+        ctx.fillText('EID Card', canvas.width / 2, canvas.height / 1.5);
+
+        const cardContainer = document.getElementById('cardContainer');
+        cardContainer.innerHTML = '';
+        cardContainer.appendChild(canvas);
+
+        const downloadButton = document.getElementById('downloadButton');
+        downloadButton.style.display = 'block';
+
+        downloadButton.onclick = function () {
+            downloadCanvas(canvas, 'eid_card.png');
         };
     };
 
-    image.src = 'eid.png'; // Set the image source
+    image.src = 'eid.png';
+
+    window.addEventListener('resize', function () {
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        generateCard(name);
+    });
 }
 
 function downloadCanvas(canvas, filename) {
-    var link = document.createElement('a');
+    const link = document.createElement('a');
     link.download = filename;
     link.href = canvas.toDataURL('image/png');
     link.click();
