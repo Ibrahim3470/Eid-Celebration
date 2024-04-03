@@ -35,12 +35,6 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* Center the download button */
-#downloadButton {
-    display: block;
-    margin: 20px auto; /* Adjust margin as needed */
-}
-
 #cardContainer {
     margin-top: 20px;
 }
@@ -54,7 +48,6 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Responsive CSS */
 @media only screen and (max-width: 600px) {
     .container {
@@ -65,4 +58,10 @@ button:hover {
         max-width: 100%; /* Ensure image doesn't exceed container width */
         height: auto; /* Maintain aspect ratio */
     }
+}
+
+/* Center the download button */
+#downloadButton {
+    display: block;
+    margin: 20px auto; /* Adjust margin as needed */
 }
