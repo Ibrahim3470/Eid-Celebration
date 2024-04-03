@@ -33,7 +33,7 @@ function generateCard(name) {
         };
     };
 
-    image.src = 'eid_image.jpg'; // Set the image source
+    image.src = 'eid.png'; // Set the image source
 }
 
 function downloadCanvas(canvas, filename) {
