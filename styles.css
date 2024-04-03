@@ -55,13 +55,6 @@ button:hover {
     }
 
     .card img {
-        max-width: 100%; /* Ensure image doesn't exceed container width */
-        height: auto; /* Maintain aspect ratio */
+        max-width: 80%; /* Adjust the percentage as needed */
     }
-}
-
-/* Center the download button */
-#downloadButton {
-    display: block;
-    margin: 20px auto; /* Adjust margin as needed */
 }
