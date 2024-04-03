@@ -35,6 +35,12 @@ button:hover {
     background-color: #0056b3;
 }
 
+/* Center the download button */
+#downloadButton {
+    display: block;
+    margin: 20px auto; /* Adjust margin as needed */
+}
+
 #cardContainer {
     margin-top: 20px;
 }
