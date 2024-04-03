@@ -54,19 +54,9 @@ button:hover {
     .container {
         max-width: 90%;
     }
-    #cardContainer canvas {
-    width: 100%;
-    height: auto;
-}
-}
-@media (min-width: 993px) {
-    .responsive-image {
-        max-width: 80%;
-    }
-}
 
-@media (max-width: 480px) {
-    .responsive-image {
-        max-width: 100%;
+    .card img {
+        max-width: 100%; /* Ensure image doesn't exceed container width */
+        height: auto; /* Maintain aspect ratio */
     }
 }
