@@ -59,3 +59,14 @@ button:hover {
     height: auto;
 }
 }
+@media (min-width: 993px) {
+    .responsive-image {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .responsive-image {
+        max-width: 100%;
+    }
+}
