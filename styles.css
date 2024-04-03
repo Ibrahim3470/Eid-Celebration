@@ -48,10 +48,9 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.card img {
+#cardContainer canvas {
     width: 100%;
     height: auto;
-    max-width: 400px; /* Adjust the maximum width as needed */
 }
 
 /* Responsive CSS */
